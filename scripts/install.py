@@ -3,7 +3,7 @@ import os
 print("Installation working...")
 
 os.chdir("/home/kenny/Code/c_files/goweb/")
-createSTATUS = os.system("gcc -o gowebBETA main.c")
+createSTATUS = os.system("gcc -o gowebBETA main.c cJson/cJSON.c")
 mvSTATUS = os.system("sudo mv gowebBETA /usr/local/bin/")
 
 if (createSTATUS == 0 and mvSTATUS == 0):
