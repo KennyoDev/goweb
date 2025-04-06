@@ -33,8 +33,6 @@ if (argc < 2) {
     printf("%s\n", webSite);
   }
   snprintf(command, sizeof(command), "firefox %s &", siteURL);
-  //start firefox *github.com just a place holder BETA*
-  //int firefoxStartStatus = system("firefox %s &", siteURL);
   int firefoxStartStatus = system(command);
 
   if(firefoxStartStatus >= 0){

@@ -2,7 +2,9 @@ import os
 
 print("Installation working...")
 
-os.chdir("/home/kenny/Code/c_files/goweb/")
+#//enter here the location where you git cloned the project
+#//example:
+os.chdir("/home/user/Documents/goweb/")
 createSTATUS = os.system("gcc -o gowebBETA main.c cJson/cJSON.c")
 mvSTATUS = os.system("sudo mv gowebBETA /usr/local/bin/")
 
