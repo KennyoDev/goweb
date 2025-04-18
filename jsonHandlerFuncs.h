@@ -12,7 +12,7 @@ char *getCorrespondingURL(char webSiteName[]){
   // open file with read
   fop = fopen("/home/kenny/Code/c_files/goweb/json/webSites.json", "r");
 
-  // loo for end of file to get file size
+  // look for end of file to get file size
   fseek(fop, 0, SEEK_END);
   fileSize = ftell(fop);  
   fseek(fop, 0, SEEK_SET);
@@ -65,3 +65,62 @@ char *getCorrespondingURL(char webSiteName[]){
 
   return result;
 }
+
+
+
+
+
+
+void addUrlToJSON(char webSiteName[], char websiteUrl[]){
+
+  FILE* jsonFile;
+  //enter you complete file path to the json here
+  char filePath[256] = "/home/kenny/Code/c_files/goweb/json/webSites.json";
+  
+  //open json file to read it
+  jsonFile = fopen(filePath, "r");
+  if(jsonFile == NULL){
+    printf("Error opening file!");
+  }
+
+  //look for end of file to get size
+  fseek(jsonFile, 0, SEEK_END);
+  long length = ftell(jsonFile);
+  rewind(jsonFile);
+
+  // Allocate space for the JSON string (+1 for null terminator)
+  char *data = malloc(length + 1);
+  if (data == NULL) {
+      printf("Memory allocation failed\n");
+      fclose(jsonFile);
+      return;
+  }
+
+  // Read file into string
+  fread(data, 1, length, jsonFile);
+  data[length] = '\0';  // Null-terminate the string
+  fclose(jsonFile);
+
+  // Parse the data into json
+  cJSON *root = cJSON_Parse(data);
+  free(data);
+
+  // Add the site to the json root
+  cJSON_AddStringToObject(root, webSiteName, websiteUrl);
+
+  // Write json to file
+  char *finalJson = cJSON_Print(root);
+  jsonFile = fopen(filePath, "w");
+  fprintf(jsonFile, "%s", finalJson);
+
+  //Clean up
+  fclose(jsonFile);
+  cJSON_Delete(root);
+  free(finalJson);
+
+}
+
+
+
+
+

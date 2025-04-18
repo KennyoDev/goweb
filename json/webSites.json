@@ -1,14 +1,8 @@
 {
-  
-  "google": "google.com",
-    
-
-  "github": "github.com",
-    
-    
-  "gitlab": "gitlab.com",
-    
-    
-  "youtube": "youtube.com"
-    
+	"google":	"google.com",
+	"github":	"github.com",
+	"gitlab":	"gitlab.com",
+	"youtube":	"youtube.com",
+	"duck":	"duckduckgo.com",
+	"guthib":	"guthib.com"
 }

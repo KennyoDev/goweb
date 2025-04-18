@@ -19,26 +19,32 @@ if (argc < 2) {
   }
   printf("%s", argv[1]);
 
-  char *siteURL = getCorrespondingURL(argv[1]);
-  if(siteURL == NULL){
-    printf("Some wrong!");
-    return 1;
+  if(strcmp(argv[1], "-n") == 0){
+    addUrlToJSON(argv[2], argv[3]);
   }
+  else{
 
-  printf("%s\n", siteURL);
+    char *siteURL = getCorrespondingURL(argv[1]);
+    if(siteURL == NULL){
+      printf("Some wrong!");
+      return 1;
+    }
 
-  //check if user input is not empty
-  if(argc > 1){
-    char *webSite = argv[1];
-    printf("%s\n", webSite);
-  }
-  snprintf(command, sizeof(command), "firefox %s &", siteURL);
-  int firefoxStartStatus = system(command);
+    printf("%s\n", siteURL);
 
-  if(firefoxStartStatus >= 0){
-    printf("Firefox running...\n");
-  }else if (firefoxStartStatus == -1){
-    printf("WTF some wrong\n");
+    //check if user input is not empty
+    if(argc > 1){
+      char *webSite = argv[1];
+      printf("%s\n", webSite);
+    }
+    snprintf(command, sizeof(command), "firefox %s &", siteURL);
+    int firefoxStartStatus = system(command);
+
+    if(firefoxStartStatus >= 0){
+      printf("Firefox running...\n");
+    }else if (firefoxStartStatus == -1){
+      printf("WTF some wrong\n");
+    }
   }
 
   return 0;
