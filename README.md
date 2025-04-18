@@ -71,11 +71,15 @@ This will open YouTube on Firefox.
 
 More sites will be added by me, but you can also just do it yourself.
 
+### With '-n' you can add a new Website:
+```
+goweb -n example example.com
+```
 
 
+<br>
 
 ***DO NOT DO ANYTHING ILLEGAL WITH THIS.***
 
-<br>
 
 Any illegal actions done with this, the developer is not responsible for any of the actions.
