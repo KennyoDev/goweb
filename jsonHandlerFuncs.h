@@ -8,9 +8,11 @@ char *getCorrespondingURL(char webSiteName[]){
   FILE* fop;
   char *jsonWebsites;
   long fileSize; // store file size
+  //enter your complete file path here
+  char filePath[256] = "/home/user/Documents/goweb/json/webiste.json";
 
   // open file with read
-  fop = fopen("/home/kenny/Code/c_files/goweb/json/webSites.json", "r");
+  fop = fopen(filePath, "r");
 
   // look for end of file to get file size
   fseek(fop, 0, SEEK_END);
