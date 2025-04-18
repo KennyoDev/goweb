@@ -9,7 +9,7 @@ char *getCorrespondingURL(char webSiteName[]){
   char *jsonWebsites;
   long fileSize; // store file size
   //enter your complete file path here
-  char filePath[256] = "/home/user/Documents/goweb/json/webiste.json";
+  char filePath[256] = "/home/user/Docs/goweb/json/webSites.json";
 
   // open file with read
   fop = fopen(filePath, "r");
