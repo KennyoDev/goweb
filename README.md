@@ -56,6 +56,8 @@ Clone the Git repo and enter your config in the Python script.
 
 Also, this is for Linux; that's why I set the PATH to local/bin.
 
+***To use it you will need to update the paths in the jsonHandlerFuncs.h(line: 13 and 78) and in the python script(line: 7)***
+
 
 
 
