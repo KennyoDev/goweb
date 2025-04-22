@@ -76,6 +76,16 @@ More sites will be added by me, but you can also just do it yourself.
 goweb -n example example.com
 ```
 
+### To specify the browser you can use 
+```
+-f for firefox
+-c for chromium
+```
+Example:
+```
+goweb -c github
+```
+
 
 <br>
 

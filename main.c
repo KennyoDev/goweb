@@ -3,6 +3,21 @@
 #include <string.h>
 #include "jsonHandlerFuncs.h"
 #include <ctype.h>
+#include <stdbool.h>
+
+//check if browser was specified
+bool getBrowserSpecified(const char flag[3]){
+
+  bool browserSpecified = 0;
+
+  if(strcmp(flag, "-f") == 0 || strcmp(flag, "-c") == 0){
+    browserSpecified = 1;
+    return browserSpecified;
+  }else{
+    return browserSpecified;
+  }
+
+}
 
 int main(int argc, char *argv[]){
 
@@ -14,17 +29,32 @@ if (argc < 2) {
 
   char command[256];
   //go thru every char and make lowercase
-  for (int i = 0; argv[1][i] != '\0'; i++) {
-    argv[1][i] = tolower(argv[1][i]);
-  }
-  printf("%s", argv[1]);
 
+  for(int i = 1; i < argc; i++){
+    for (int j = 0; argv[i][j] != '\0'; j++) {
+        argv[i][j] = tolower(argv[i][j]);
+      }
+  }
+  
   if(strcmp(argv[1], "-n") == 0){
-    addUrlToJSON(argv[2], argv[3]);
+
+    if(getBrowserSpecified(argv[1])){
+      addUrlToJSON(argv[3], argv[4]);
+    }else{
+      addUrlToJSON(argv[2], argv[3]);
+    }
+
   }
   else{
 
-    char *siteURL = getCorrespondingURL(argv[1]);
+    char *siteURL;
+
+    if(getBrowserSpecified(argv[1])){
+      siteURL = getCorrespondingURL(argv[2]);
+    }else{
+      siteURL = getCorrespondingURL(argv[1]);
+    }
+//char *siteURL = getCorrespondingURL(argv[1]);
     if(siteURL == NULL){
       printf("Some wrong!");
       return 1;
@@ -35,14 +65,28 @@ if (argc < 2) {
     //check if user input is not empty
     if(argc > 1){
       char *webSite = argv[1];
-      printf("%s\n", webSite);
     }
-    snprintf(command, sizeof(command), "firefox %s &", siteURL);
-    int firefoxStartStatus = system(command);
 
-    if(firefoxStartStatus >= 0){
-      printf("Firefox running...\n");
-    }else if (firefoxStartStatus == -1){
+    if(strcmp(argv[1], "-c") == 0){
+      snprintf(command, sizeof(command), "chromium %s &", siteURL);
+    }else if(strcmp(argv[1], "-f") == 0){
+      snprintf(command, sizeof(command), "firefox %s &", siteURL);
+    }else{
+      snprintf(command, sizeof(command), "firefox %s &", siteURL);
+    }
+
+    int browserStartStatus = system(command);
+
+    if(browserStartStatus >= 0){
+      if(strcmp(argv[1], "-c") == 0){
+        printf("Chromium running...\n");
+      }else if(strcmp(argv[1], "-f") == 0){
+        printf("Firefox running...\n");
+      }else{
+        printf("Firefox running...\n");
+      }
+      
+    }else if (browserStartStatus == -1){
       printf("WTF some wrong\n");
     }
   }
