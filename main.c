@@ -38,11 +38,7 @@ if (argc < 2) {
   
   if(strcmp(argv[1], "-n") == 0){
 
-    if(getBrowserSpecified(argv[1])){
-      addUrlToJSON(argv[3], argv[4]);
-    }else{
-      addUrlToJSON(argv[2], argv[3]);
-    }
+    addUrlToJSON(argv[2], argv[3]);
 
   }
   else{
@@ -54,7 +50,7 @@ if (argc < 2) {
     }else{
       siteURL = getCorrespondingURL(argv[1]);
     }
-//char *siteURL = getCorrespondingURL(argv[1]);
+
     if(siteURL == NULL){
       printf("Some wrong!");
       return 1;
