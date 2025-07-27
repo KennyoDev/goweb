@@ -31,34 +31,34 @@ char *getCorrespondingURL(char webSiteName[]){
         printf("Error parsing JSON: %s\n", cJSON_GetErrorPtr());
         free(jsonWebsites);
         return NULL;
-    }
+  }
 
 // try to find the website url
   cJSON *siteURL = cJSON_GetObjectItem(json, webSiteName);
-      if (siteURL == NULL) {
+  if (siteURL == NULL) {
         printf("Website name '%s' not found in JSON\n", webSiteName);
         cJSON_Delete(json); 
         free(jsonWebsites); 
         return NULL;
-    }
+  }
 
 // get the url
   const char *url = cJSON_GetStringValue(siteURL);
-      if (url == NULL) {
+  if (url == NULL) {
         printf("URL for '%s' is not a string\n", webSiteName);
         cJSON_Delete(json);
         free(jsonWebsites); 
         return NULL;
-    }
+  }
 
 // make url to string
   char *result = strdup(url);
-      if (result == NULL) {
+  if (result == NULL) {
         printf("Memory allocation for result failed\n");
         cJSON_Delete(json);
         free(jsonWebsites);
         return NULL;
-    }
+  }
   
   cJSON_Delete(json);
   free(jsonWebsites);
