@@ -10,7 +10,8 @@ bool getBrowserSpecified(const char flag[3]){
 
   bool browserSpecified = 0;
 
-  if(strcmp(flag, "-f") == 0 || strcmp(flag, "-c") == 0){
+  if(strcmp(flag, "-f") == 0 || strcmp(flag, "-c") == 0
+                             || strcmp(flag, "-z") == 0){
     browserSpecified = 1;
     return browserSpecified;
   }else{
@@ -64,8 +65,13 @@ int main(int argc, char *argv[]){
 
     if(strcmp(argv[1], "-c") == 0){
       snprintf(command, sizeof(command), "chromium %s &", siteURL);
+
     }else if(strcmp(argv[1], "-f") == 0){
       snprintf(command, sizeof(command), "firefox %s &", siteURL);
+
+    }else if(strcmp(argv[1], "-z") == 0){
+      snprintf(command, sizeof(command), "zen-browser %s &", siteURL);
+
     }else{
       snprintf(command, sizeof(command), "firefox %s &", siteURL);
     }
@@ -75,8 +81,13 @@ int main(int argc, char *argv[]){
     if(browserStartStatus >= 0){
       if(strcmp(argv[1], "-c") == 0){
         printf("Chromium running...\n");
+
       }else if(strcmp(argv[1], "-f") == 0){
         printf("Firefox running...\n");
+
+      }else if(strcmp(argv[1], "-z") == 0){
+        printf("Zen-Browser running...\n");
+
       }else{
         printf("Firefox running...\n");
       }

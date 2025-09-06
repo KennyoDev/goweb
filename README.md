@@ -82,6 +82,7 @@ goweb -n example example.com
 ```
 -f for firefox
 -c for chromium
+-z for zen-browser
 ```
 Example:
 ```
