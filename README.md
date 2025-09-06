@@ -89,10 +89,3 @@ Example:
 goweb -c github
 ```
 
-
-<br>
-
-***DO NOT DO ANYTHING ILLEGAL WITH THIS.***
-
-
-Any illegal actions done with this, the developer is not responsible for any of the actions.
