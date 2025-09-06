@@ -10,8 +10,7 @@ char *getCorrespondingURL(char webSiteName[]){
   long fileSize; // store file size
 
   // open file with read
-  //fop = fopen("/home/user/Docs/goweb/webSites.json", "r");
-  fop = fopen("/home/kenny/Code/c/goweb_changes/goweb/goweb/json/webSites.json", "r");
+  fop = fopen("/home/user/Docs/goweb/webSites.json", "r");
 
   // look for end of file to get file size
   fseek(fop, 0, SEEK_END);
@@ -76,9 +75,8 @@ void addUrlToJSON(char webSiteName[], char websiteUrl[]){
 
   FILE* jsonFile;
   //enter you complete file path to the json here
-  //char filePath[256] = "/home/user/Docs/goweb/webSites.json";
-  char filePath[256] = "/home/kenny/Code/c/goweb_changes/goweb/goweb/json/webSites.json";
-  
+  char filePath[256] = "/home/user/Docs/goweb/webSites.json";
+   
   //open json file to read it
   jsonFile = fopen(filePath, "r");
   if(jsonFile == NULL){
